@@ -26,11 +26,20 @@ We want to build an application that is able to write and save notes, so that I 
 
 In this project we are able to use our skills on Express.js back end and will save and retrieve note data from a JSON file.
 
+## Implentation
+
+* For installation onto local machine, clone provided repository.
+* Use `npm i` to install all dependencies or devDependencies from a package. json file.
+* Use `npm start` to initiate the server in your terminal.
+* Visit the local host URL.
+
 ## Notes
 
 Used Google (https://www.google.com/)
 
 Used W3 Schools (https://www.w3schools.com/)
+
+Used Knowledge and past Activities from GWU Bootcamp: GWU-VIRT-FSF-PT-08-2023-U-LOLC-MTTH.
 
 
 ## Assets
