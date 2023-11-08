@@ -15,7 +15,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 
-//return all saved notes
+
 app.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', (err, data) => {
         if (err) throw err;
@@ -24,7 +24,7 @@ app.get('/api/notes', (req, res) => {
     });
 })
 
-//grabs notes from body of request
+
 app.post('/api/notes', (req, res) => {
     
     const newNote = req.body;
@@ -37,12 +37,14 @@ app.post('/api/notes', (req, res) => {
     res.json(dbNotes)
 })
 
+
+//only able to delete one. manually delete all in the db.json
 app.delete('/api/notes/:id', (req, res) => {
     const idToDelete = req.params.id.toString(); // Convert req.params.id to a string
     const newDb = dbNotes.filter((note) => note.id !== idToDelete);
     fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
 
-    readFile.json(newDb);
+    res.json(newDb);
 });
 
 

@@ -35,7 +35,6 @@ Used W3 Schools (https://www.w3schools.com/)
 
 ## Assets
 
-The following video deminstrated how to use the application (download the video):
 
 
 
