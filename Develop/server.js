@@ -37,6 +37,15 @@ app.post('/api/notes', (req, res) => {
     res.json(dbNotes)
 })
 
+app.delete('/api/notes/:id', (req, res) => {
+    const idToDelete = req.params.id.toString(); // Convert req.params.id to a string
+    const newDb = dbNotes.filter((note) => note.id !== idToDelete);
+    fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
+
+    readFile.json(newDb);
+});
+
+
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, './public/index.html'));
