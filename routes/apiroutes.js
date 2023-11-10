@@ -2,7 +2,7 @@
 const router = require('express').Router();
 
 const fs = require('fs');
-const dbNotes = require('./db/db.json');
+const dbNotes = require('../db/db.json');
 const { v4: uuidv4 } = require('uuid');
 
 
