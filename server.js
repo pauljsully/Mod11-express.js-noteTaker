@@ -6,9 +6,8 @@ const path = require('path');
 
 const PORT = process.env.PORT || 3000;
 
-const dbNotes = require('./db/db.json');
 
-const { v4: uuidv4 } = require('uuid');
+
 
 const htmlroutes = require('./routes/htmlroutes')
 const apiroutes = require('./routes/apiroutes')

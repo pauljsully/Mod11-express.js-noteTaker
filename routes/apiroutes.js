@@ -2,6 +2,8 @@
 const router = require('express').Router();
 
 const fs = require('fs');
+const dbNotes = require('./db/db.json');
+const { v4: uuidv4 } = require('uuid');
 
 
 router.get('/notes', (req, res) => {
@@ -28,7 +30,7 @@ router.post('/notes', (req, res) => {
 
 //only able to delete one. manually delete all in the db.json
 router.delete('/notes/:id', (req, res) => {
-    const idToDelete = req.params.id.toString(); // Convert req.params.id to a string
+    const idToDelete = req.params.id;
     const newDb = dbNotes.filter((note) => note.id !== idToDelete);
     fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
 
