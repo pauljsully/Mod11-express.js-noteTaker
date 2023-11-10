@@ -10,56 +10,62 @@ const dbNotes = require('./db/db.json');
 
 const { v4: uuidv4 } = require('uuid');
 
+const htmlroutes = require('./routes/htmlroutes')
+const apiroutes = require('./routes/apiroutes')
+
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static('public'));
+app.use('/api', apiroutes)
+app.use('/', htmlroutes)
 
 
 
-app.get('/api/notes', (req, res) => {
-    fs.readFile('./db/db.json', (err, data) => {
-        if (err) throw err;
-        let dbData = JSON.parse(data);
-        res.json(dbData)
-    });
-})
+
+// app.get('/api/notes', (req, res) => {
+//     fs.readFile('./db/db.json', (err, data) => {
+//         if (err) throw err;
+//         let dbData = JSON.parse(data);
+//         res.json(dbData)
+//     });
+// })
 
 
-app.post('/api/notes', (req, res) => {
+// app.post('/api/notes', (req, res) => {
     
-    const newNote = req.body;
+//     const newNote = req.body;
 
-    //unique ID
-    newNote.id = uuidv4();
+//     //unique ID
+//     newNote.id = uuidv4();
 
-    dbNotes.push(newNote)
-    fs.writeFileSync('./db/db.json', JSON.stringify(dbNotes))
-    res.json(dbNotes)
-})
-
-
-//only able to delete one. manually delete all in the db.json
-app.delete('/api/notes/:id', (req, res) => {
-    const idToDelete = req.params.id.toString(); // Convert req.params.id to a string
-    const newDb = dbNotes.filter((note) => note.id !== idToDelete);
-    fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
-
-    res.json(newDb);
-});
+//     dbNotes.push(newNote)
+//     fs.writeFileSync('./db/db.json', JSON.stringify(dbNotes))
+//     res.json(dbNotes)
+// })
 
 
+// //only able to delete one. manually delete all in the db.json
+// app.delete('/api/notes/:id', (req, res) => {
+//     const idToDelete = req.params.id.toString(); // Convert req.params.id to a string
+//     const newDb = dbNotes.filter((note) => note.id !== idToDelete);
+//     fs.writeFileSync('./db/db.json', JSON.stringify(newDb));
 
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-});
+//     res.json(newDb);
+// });
 
-app.get('/notes', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/notes.html'));
-});
 
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, './public/index.html'));
-});
+
+// app.get('/', (req, res) => {
+//     res.sendFile(path.join(__dirname, './public/index.html'));
+// });
+
+// app.get('/notes', (req, res) => {
+//     res.sendFile(path.join(__dirname, './public/notes.html'));
+// });
+
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, './public/index.html'));
+// });
 
 
 app.listen(PORT, () => {
