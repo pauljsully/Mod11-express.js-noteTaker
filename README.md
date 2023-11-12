@@ -44,6 +44,9 @@ Used Knowledge and past Activities from GWU Bootcamp: GWU-VIRT-FSF-PT-08-2023-U-
 
 ## Assets
 
+This is the Heroku live application:
+(https://intense-castle-48534-e6d230956dc1.herokuapp.com/)
+
 
 This is the github repo location:
 (https://github.com/pauljsully/Mod11-express.js-noteTaker.git)
